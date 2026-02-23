@@ -13,4 +13,4 @@ A simple web app to report and search lost items.
 - Simple UI
 
 ## Author
-Mauni
+Maunika
