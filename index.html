@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lost & Found</title>
+   <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🔍</text></svg>">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-area">
+      <span class="logo-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+      <div>
+        <h1>Lost <span>&</span> Found</h1>
+        <p class="tagline">Track what matters</p>
+      </div>
+    </div>
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
+      <i class="fa-solid fa-moon" id="themeIcon"></i>
+    </button>
+  </header>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-num" id="totalCount">0</span>
+      <span class="stat-label">Total</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num lost-num" id="lostCount">0</span>
+      <span class="stat-label">Lost</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <span class="stat-num found-num" id="foundCount">0</span>
+      <span class="stat-label">Found</span>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="search-wrap">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" id="search" placeholder="Search items..." onkeyup="searchItem()">
+  </div>
+
+  <!-- Form -->
+  <div class="form-box">
+    <h2 class="form-title">Add New Item</h2>
+    <div class="form-grid">
+      <div class="input-group">
+        <label>Item Name</label>
+        <input type="text" id="itemName" placeholder="e.g. Black Wallet">
+      </div>
+      <div class="input-group">
+        <label>Location</label>
+        <input type="text" id="location" placeholder="e.g. Library, 2nd floor">
+      </div>
+    </div>
+    <div class="input-group">
+      <label>Description</label>
+      <input type="text" id="description" placeholder="Brief description of the item...">
+    </div>
+    <div class="form-row">
+      <div class="type-toggle">
+        <button class="type-btn active" id="lostBtn" onclick="selectType('Lost')">
+          <i class="fa-solid fa-circle-exclamation"></i> Lost
+        </button>
+        <button class="type-btn" id="foundBtn" onclick="selectType('Found')">
+          <i class="fa-solid fa-circle-check"></i> Found
+        </button>
+      </div>
+      <button class="add-btn" onclick="addItem()">
+        <i class="fa-solid fa-plus"></i> Add Item
+      </button>
+    </div>
+  </div>
+
+  <!-- Filter Pills -->
+  <div class="filter-pills">
+    <button class="pill active" onclick="filterItems('All', this)">All</button>
+    <button class="pill" onclick="filterItems('Lost', this)">Lost</button>
+    <button class="pill" onclick="filterItems('Found', this)">Found</button>
+  </div>
+
+  <!-- Item List -->
+  <div id="itemList"></div>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <i class="fa-solid fa-box-open"></i>
+    <p>No items yet. Add your first item above!</p>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
